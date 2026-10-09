@@ -39,7 +39,7 @@ npm run dev        # http://localhost:3000
 design/tokens/          exporty dizajn systémov (zdroj pravdy pre farby, typo, rádiusy)
 scripts/build-tokens.mjs  generátor Tailwind @theme
 public/brand, public/ig  logo a fotky pripravené pre web (WebP)
-assets/                  originály (logo, stiahnuté JPEG z IG — ig-raw/ nie je v gite)
+assets/                  lokálne podklady (varianty loga, originály z IG) — nie sú v gite
 src/
 ├─ app/                  routy, layout (fonty, metadata), robots, sitemap, ikony
 ├─ config/site.ts        env konfigurácia
@@ -66,12 +66,35 @@ src/
 - **Vstupné:** `entry: [{ price: 3, until: '22:00' }, { price: 5 }]` sa zobrazí ako „vstup 3 € do 22:00, potom 5 €“.
 - **Otváracie hodiny, odkazy:** `src/content/venue.ts`.
 
+## Nasadenie (DigitalOcean App Platform)
+
+Web potrebuje bežiaci Node.js server (`next start`), nie len statický hosting — inak nefunguje hodinová obnova programu.
+
+1. **Create App → GitHub →** repo `MichalJankura/dukla`, vetva `main`, _Autodeploy_ zapnutý.
+2. Typ **Web Service**, prostredie **Node.js** (zistí sa samo z `package.json`).
+   - Build command: `npm run build`
+   - Run command: `npm start`
+   - HTTP port: `8080` (App Platform ho odovzdá v premennej `PORT`, ktorú `next start` číta)
+3. **Environment variables** (scope _Build & Run_ — `NEXT_PUBLIC_*` sa vkladajú do kódu pri builde):
+
+   | Premenná                          | Hodnota                            |
+   | --------------------------------- | ---------------------------------- |
+   | `NEXT_PUBLIC_SITE_URL`            | `https://duklaclub.me`             |
+   | `NEXT_PUBLIC_VARIANT`             | `afterglow` alebo `blackout`       |
+   | `NEXT_PUBLIC_SHOW_VARIANT_SWITCH` | `true` počas výberu, potom `false` |
+
+4. Región **Frankfurt (fra)** — najbližšie k Slovensku.
+
+Rovnaké nastavenie je v [`.do/app.yaml`](.do/app.yaml) (dá sa použiť cez `doctl apps create --spec .do/app.yaml`).
+
+**Doména `duklaclub.me` (Namecheap):** v App Platform → _Settings → Domains_ pridaj `duklaclub.me` a `www.duklaclub.me`. DigitalOcean ukáže, aké DNS záznamy nastaviť v Namecheap (_Domain List → Manage → Advanced DNS_); HTTPS certifikát vystaví sám.
+
 ## Otvorené body (TODO)
 
 - [ ] Denné otváracie hodiny (FB uvádza „okrem pondelka otvorené denne“). Zatiaľ sa zobrazuje `[HODINY]`.
 - [ ] Cena vstupu na Oktoberfest (plagát je orezaný).
 - [ ] Položky baru: koktaily, káva, ceny, nápojový lístok (PDF).
-- [ ] Doména a `NEXT_PUBLIC_SITE_URL`.
+- [ ] Výber finálneho variantu → `NEXT_PUBLIC_VARIANT`, vypnúť prepínač.
 - [ ] v2: napojenie Instagram Graph API pre galériu (vyžaduje Business účet prepojený s FB stránkou), alebo headless CMS pre program.
 
 Animácie a ich pravidlá sú popísané v [docs/ANIMACIE.md](docs/ANIMACIE.md).

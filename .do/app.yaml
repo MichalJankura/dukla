@@ -1,0 +1,38 @@
+# DigitalOcean App Platform spec — https://docs.digitalocean.com/products/app-platform/reference/app-spec/
+# Create:  doctl apps create --spec .do/app.yaml
+# Update:  doctl apps update <app-id> --spec .do/app.yaml
+name: dukla-web
+region: fra
+
+services:
+  - name: web
+    github:
+      repo: MichalJankura/dukla
+      branch: main
+      deploy_on_push: true
+    environment_slug: node-js
+    build_command: npm run build
+    run_command: npm start
+    # App Platform passes this as $PORT; `next start` listens on it.
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: apps-s-1vcpu-1gb
+    health_check:
+      http_path: /
+    envs:
+      # NEXT_PUBLIC_* are inlined at build time, so they must be available to the build too.
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://duklaclub.me
+        scope: RUN_AND_BUILD_TIME
+      - key: NEXT_PUBLIC_VARIANT
+        value: afterglow
+        scope: RUN_AND_BUILD_TIME
+      - key: NEXT_PUBLIC_SHOW_VARIANT_SWITCH
+        value: 'true'
+        scope: RUN_AND_BUILD_TIME
+
+domains:
+  - domain: duklaclub.me
+    type: PRIMARY
+  - domain: www.duklaclub.me
+    type: ALIAS

@@ -1,5 +1,5 @@
 export const siteConfig = {
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://duklaclub.me',
   locale: 'sk_SK',
   /** Raw value; validated against the variant registry in src/variants. */
   defaultVariant: process.env.NEXT_PUBLIC_VARIANT,

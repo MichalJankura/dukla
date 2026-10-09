@@ -22,8 +22,8 @@ Thumbs.db
 # generated
 src/styles/tokens.generated.css
 
-# raw downloads (originals stay local, web-ready copies live in public/)
-assets/ig-raw/
+# design source material (logo variants, IG originals) stays local; the site uses public/
+assets/
 
 # local tooling
 .claude/
