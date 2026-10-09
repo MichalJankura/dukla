@@ -1,0 +1,113 @@
+@import 'tailwindcss';
+@import './tokens.generated.css';
+@import 'lenis/dist/lenis.css';
+
+/*
+ * DUKLA brand — colours measured from the logo (assets/brand).
+ * Both variants use these on top of their design-system tokens.
+ */
+@theme {
+  --color-dukla-black: #000000;
+  --color-dukla-white: #ffffff;
+  --color-dukla-cyan: #30e2e3; /* tagline: primary accent, 13:1 on black, black text on it */
+  --color-dukla-glow: #33f3fe; /* brightest point of the glow: hover, focus */
+  --color-dukla-glow-mid: #06c2d7;
+  --color-dukla-glow-deep: #0099ae;
+  --color-dukla-cyan-ink: #00707f; /* derived: cyan text on light grounds, 5.3:1 */
+
+  --ease-dukla: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --animate-rise: dukla-rise 0.9s var(--ease-dukla) both;
+  --animate-glow: dukla-glow 3.2s ease-in-out infinite;
+  --animate-ping-soft: dukla-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-line-up: dukla-line-up 1s var(--ease-dukla) both;
+  --animate-fade-in: dukla-fade 0.8s ease both;
+  --animate-ken-burns: dukla-ken-burns 20s ease-in-out infinite alternate;
+
+  @keyframes dukla-rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes dukla-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 0 rgb(48 226 227 / 0));
+    }
+    50% {
+      filter: drop-shadow(0 0 28px rgb(48 226 227 / 0.6));
+    }
+  }
+  @keyframes dukla-ping {
+    0% {
+      box-shadow: 0 0 0 0 rgb(48 226 227 / 0.7);
+    }
+    100% {
+      box-shadow: 0 0 0 10px rgb(48 226 227 / 0);
+    }
+  }
+  @keyframes dukla-line-up {
+    from {
+      transform: translateY(105%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes dukla-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes dukla-ken-burns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.08);
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--color-dukla-black);
+  }
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: var(--color-dukla-cyan);
+    color: var(--color-dukla-black);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-dukla-glow);
+    outline-offset: 2px;
+  }
+  /* Anchor targets clear the sticky navigation. */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

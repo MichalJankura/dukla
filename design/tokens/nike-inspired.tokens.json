@@ -1,0 +1,683 @@
+{
+ "name": "Nike-inspired",
+ "version": 1,
+ "color": {
+  "themes": [
+   {
+    "id": "light",
+    "name": "Light"
+   },
+   {
+    "id": "dark",
+    "name": "Dark"
+   }
+  ],
+  "tokens": [
+   {
+    "name": "black",
+    "value": "#111111",
+    "usage": "Brand black, never #000000. Primary text, primary button fill, promo banner, nav text; fixed in both themes."
+   },
+   {
+    "name": "white",
+    "value": "#ffffff",
+    "usage": "Page canvas, button text on black, nav bar; fixed in both themes."
+   },
+   {
+    "name": "grey-50",
+    "value": "#fafafa",
+    "usage": "Snow. Lightest near-white differentiation."
+   },
+   {
+    "name": "grey-100",
+    "value": "#f5f5f5",
+    "usage": "Light grey. Input and search fill, image placeholder, loading skeleton, icon-button fill."
+   },
+   {
+    "name": "grey-200",
+    "value": "#e5e5e5",
+    "usage": "Hover background, disabled button fill, the 1px inset divider."
+   },
+   {
+    "name": "grey-300",
+    "value": "#cacacb",
+    "usage": "Subtle and input borders, outlined-button border; also hover fill of a white button on dark. Decorative contrast only (1.6:1 on white)."
+   },
+   {
+    "name": "grey-400",
+    "value": "#9e9ea0",
+    "usage": "Disabled text on light grounds (2.7:1, exempt as disabled); secondary text on dark grounds (6.2:1 on grey-900)."
+   },
+   {
+    "name": "grey-500",
+    "value": "#707072",
+    "usage": "Secondary text, placeholder, primary border, button hover fill. 4.9:1 on white, 4.5:1 on grey-100."
+   },
+   {
+    "name": "grey-600",
+    "value": "#4b4b4d",
+    "usage": "Disabled text on dark grounds."
+   },
+   {
+    "name": "grey-700",
+    "value": "#39393b",
+    "usage": "Hover state on dark backgrounds."
+   },
+   {
+    "name": "grey-800",
+    "value": "#28282a",
+    "usage": "Primary background of dark, inverted sections."
+   },
+   {
+    "name": "grey-900",
+    "value": "#1f1f21",
+    "usage": "Deep charcoal. Inverse primary background, darkest non-black surface."
+   },
+   {
+    "name": "red-600",
+    "value": "#d30005",
+    "usage": "Critical: errors, sale badges, urgent notices. 5.6:1 on white."
+   },
+   {
+    "name": "red-500",
+    "value": "#ee0005",
+    "usage": "Brighter red for emphasis. On grey-900 only 3.6:1: use at 24px+ or as a border."
+   },
+   {
+    "name": "orange-badge",
+    "value": "#d33918",
+    "usage": "Badge text and promotional callouts on white (4.8:1)."
+   },
+   {
+    "name": "orange-400",
+    "value": "#ff5000",
+    "usage": "Expressive orange for campaigns; never UI chrome."
+   },
+   {
+    "name": "green-600",
+    "value": "#007d48",
+    "usage": "Success, availability, positive states on white (5.2:1)."
+   },
+   {
+    "name": "green-500",
+    "value": "#1eaa52",
+    "usage": "Success on dark grounds (5.4:1 on grey-900)."
+   },
+   {
+    "name": "blue-500",
+    "value": "#1151ff",
+    "usage": "Text links and informational highlights on white (5.8:1)."
+   },
+   {
+    "name": "blue-400",
+    "value": "#1190ff",
+    "usage": "Links and focus on dark grounds (5.1:1 on grey-900)."
+   },
+   {
+    "name": "yellow-200",
+    "value": "#fedf35",
+    "usage": "Warning backgrounds and attention banners; black text on it holds 14:1."
+   },
+   {
+    "name": "focus-blue",
+    "value": "rgba(39, 93, 197, 1)",
+    "usage": "Keyboard focus ring on light grounds (6.1:1 on white). On grey-900 it drops to 2.7:1, so the Dark theme's focus uses blue-400."
+   },
+   {
+    "name": "ramp-red-50",
+    "value": "#ffe5e5",
+    "usage": "Red ramp, lightest. Campaign and product contexts only."
+   },
+   {
+    "name": "ramp-red-900",
+    "value": "#530300",
+    "usage": "Red ramp, deepest."
+   },
+   {
+    "name": "ramp-orange-50",
+    "value": "#ffe2d6",
+    "usage": "Orange ramp, lightest."
+   },
+   {
+    "name": "ramp-orange-900",
+    "value": "#3e1009",
+    "usage": "Orange ramp, deepest."
+   },
+   {
+    "name": "ramp-yellow-50",
+    "value": "#fef087",
+    "usage": "Yellow ramp, lightest."
+   },
+   {
+    "name": "ramp-yellow-base",
+    "value": "#fca600",
+    "usage": "Yellow ramp, core."
+   },
+   {
+    "name": "ramp-yellow-900",
+    "value": "#99470a",
+    "usage": "Yellow ramp, deepest."
+   },
+   {
+    "name": "ramp-green-50",
+    "value": "#dfffb9",
+    "usage": "Green ramp, lightest."
+   },
+   {
+    "name": "ramp-green-900",
+    "value": "#003c2a",
+    "usage": "Green ramp, deepest."
+   },
+   {
+    "name": "ramp-teal-50",
+    "value": "#d4fffb",
+    "usage": "Teal ramp, lightest."
+   },
+   {
+    "name": "ramp-teal-base",
+    "value": "#008e98",
+    "usage": "Teal ramp, core."
+   },
+   {
+    "name": "ramp-teal-900",
+    "value": "#043441",
+    "usage": "Teal ramp, deepest."
+   },
+   {
+    "name": "ramp-blue-50",
+    "value": "#d6eeff",
+    "usage": "Blue ramp, lightest."
+   },
+   {
+    "name": "ramp-blue-900",
+    "value": "#020664",
+    "usage": "Blue ramp, deepest."
+   },
+   {
+    "name": "ramp-purple-50",
+    "value": "#e4e1fc",
+    "usage": "Purple ramp, lightest."
+   },
+   {
+    "name": "ramp-purple-base",
+    "value": "#6e0ff6",
+    "usage": "Purple ramp, core."
+   },
+   {
+    "name": "ramp-purple-900",
+    "value": "#1c0060",
+    "usage": "Purple ramp, deepest."
+   },
+   {
+    "name": "ramp-pink-50",
+    "value": "#ffe1f3",
+    "usage": "Pink ramp, lightest."
+   },
+   {
+    "name": "ramp-pink-base",
+    "value": "#ed1aa0",
+    "usage": "Pink ramp, core."
+   },
+   {
+    "name": "ramp-pink-900",
+    "value": "#4c012d",
+    "usage": "Pink ramp, deepest."
+   },
+   {
+    "name": "surface",
+    "value": {
+     "light": "{white}",
+     "dark": "{grey-900}"
+    },
+    "usage": "Page ground. Dark: the inverse primary background."
+   },
+   {
+    "name": "surface-alt",
+    "value": {
+     "light": "{grey-100}",
+     "dark": "{grey-800}"
+    },
+    "usage": "Secondary ground, input and search fill, image placeholder."
+   },
+   {
+    "name": "surface-hover",
+    "value": {
+     "light": "{grey-200}",
+     "dark": "{grey-700}"
+    },
+    "usage": "Hover background of quiet controls."
+   },
+   {
+    "name": "text-primary",
+    "value": {
+     "light": "{black}",
+     "dark": "{white}"
+    },
+    "usage": "Headings, body, nav links on surface and surface-alt (14:1 or more in both themes)."
+   },
+   {
+    "name": "text-secondary",
+    "value": {
+     "light": "{grey-500}",
+     "dark": "{grey-400}"
+    },
+    "usage": "Descriptions, metadata, prices labels, placeholders on surface and surface-alt (4.5:1 or more)."
+   },
+   {
+    "name": "text-disabled",
+    "value": {
+     "light": "{grey-400}",
+     "dark": "{grey-600}"
+    },
+    "usage": "Inactive elements and unavailable options (disabled text is exempt from contrast minimums)."
+   },
+   {
+    "name": "border-primary",
+    "value": {
+     "light": "{grey-500}",
+     "dark": "{grey-400}"
+    },
+    "usage": "Standard border and hovered outline; meets 3:1 on surface."
+   },
+   {
+    "name": "border-secondary",
+    "value": {
+     "light": "{grey-300}",
+     "dark": "{grey-700}"
+    },
+    "usage": "Subtle borders, input borders and dividers. Below 3:1 (source value kept): never the only cue that a control exists."
+   },
+   {
+    "name": "border-active",
+    "value": {
+     "light": "{black}",
+     "dark": "{white}"
+    },
+    "usage": "Active or focused input border."
+   },
+   {
+    "name": "button-fill",
+    "value": {
+     "light": "{black}",
+     "dark": "{white}"
+    },
+    "usage": "Primary pill fill; on dark sections the white 'primary on dark'."
+   },
+   {
+    "name": "button-text",
+    "value": {
+     "light": "{white}",
+     "dark": "{black}"
+    },
+    "usage": "Label on button-fill."
+   },
+   {
+    "name": "button-hover",
+    "value": {
+     "light": "{grey-500}",
+     "dark": "{grey-300}"
+    },
+    "usage": "Primary pill fill on hover. White label on grey-500 holds 4.9:1."
+   },
+   {
+    "name": "critical",
+    "value": {
+     "light": "{red-600}",
+     "dark": "{red-500}"
+    },
+    "usage": "Errors and sale. Dark theme value is 3.6:1 on surface: 24px+ text, borders and badges only."
+   },
+   {
+    "name": "success",
+    "value": {
+     "light": "{green-600}",
+     "dark": "{green-500}"
+    },
+    "usage": "Confirmation and availability; always paired with a word."
+   },
+   {
+    "name": "link",
+    "value": {
+     "light": "{blue-500}",
+     "dark": "{blue-400}"
+    },
+    "usage": "Text links."
+   },
+   {
+    "name": "focus",
+    "value": {
+     "light": "{focus-blue}",
+     "dark": "{blue-400}"
+    },
+    "usage": "2px keyboard focus ring on every interactive element."
+   },
+   {
+    "name": "warning",
+    "value": "{yellow-200}",
+    "usage": "Warning banner fill; text on it is black."
+   },
+   {
+    "name": "badge",
+    "value": {
+     "light": "{orange-badge}",
+     "dark": "{orange-400}"
+    },
+    "usage": "Promotional badge text such as 'Just In' or 'Bestseller'."
+   },
+   {
+    "name": "scrim",
+    "value": "rgba(17, 17, 17, 0.6)",
+    "usage": "Dark scrim under text on photography. Alpha is an assumption; the source gives no value."
+   }
+  ]
+ },
+ "type": {
+  "fonts": [],
+  "families": {
+   "display": "\"Nike Futura ND\", Oswald, \"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif",
+   "heading": "\"Helvetica Now Display Medium\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+   "text": "\"Helvetica Now Text\", \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+  },
+  "groups": [
+   {
+    "name": "Display",
+    "family": "display",
+    "note": "Condensed, uppercase, 0.90 leading. Never below 24px. Oswald stands in where the custom face is unavailable.",
+    "styles": [
+     {
+      "name": "display",
+      "fontSize": "96px",
+      "lineHeight": 0.9,
+      "fontWeight": 500,
+      "sample": "JUST DO MORE",
+      "usage": "Hero headlines only, always uppercase. Steps down to 64px then 48px on smaller screens."
+     }
+    ]
+   },
+   {
+    "name": "Headings",
+    "family": "heading",
+    "styles": [
+     {
+      "name": "heading-1",
+      "fontSize": "32px",
+      "lineHeight": 1.2,
+      "fontWeight": 500,
+      "sample": "Shop by Sport",
+      "usage": "Section titles."
+     },
+     {
+      "name": "heading-2",
+      "fontSize": "24px",
+      "lineHeight": 1.2,
+      "fontWeight": 500,
+      "sample": "Trending This Week",
+      "usage": "Subsections."
+     }
+    ]
+   },
+   {
+    "name": "Text",
+    "family": "text",
+    "note": "Weight 500 for anything interactive; 400 only for plain copy and legal.",
+    "styles": [
+     {
+      "name": "heading-3",
+      "fontSize": "16px",
+      "lineHeight": 1.5,
+      "fontWeight": 500,
+      "sample": "Pegasus Trail",
+      "usage": "Card titles and product names."
+     },
+     {
+      "name": "body",
+      "fontSize": "16px",
+      "lineHeight": 1.75,
+      "fontWeight": 400,
+      "sample": "Responsive cushioning for everyday miles.",
+      "usage": "Product descriptions."
+     },
+     {
+      "name": "body-medium",
+      "fontSize": "16px",
+      "lineHeight": 1.75,
+      "fontWeight": 500,
+      "sample": "Free delivery for members.",
+      "usage": "Emphasized body text."
+     },
+     {
+      "name": "link",
+      "fontSize": "16px",
+      "lineHeight": 1.75,
+      "fontWeight": 500,
+      "sample": "New & Featured",
+      "usage": "Navigation links."
+     },
+     {
+      "name": "link-small",
+      "fontSize": "14px",
+      "lineHeight": 1.86,
+      "fontWeight": 500,
+      "sample": "Find a Store",
+      "usage": "Footer and utility links."
+     },
+     {
+      "name": "button",
+      "fontSize": "16px",
+      "lineHeight": 1.5,
+      "fontWeight": 500,
+      "sample": "Add to Bag",
+      "usage": "CTA labels."
+     },
+     {
+      "name": "button-small",
+      "fontSize": "14px",
+      "lineHeight": 1.5,
+      "fontWeight": 500,
+      "sample": "Filter",
+      "usage": "Secondary buttons and filter pills."
+     },
+     {
+      "name": "caption",
+      "fontSize": "14px",
+      "lineHeight": 1.5,
+      "fontWeight": 500,
+      "sample": "129,99 €",
+      "usage": "Price labels."
+     },
+     {
+      "name": "small",
+      "fontSize": "12px",
+      "lineHeight": 1.5,
+      "fontWeight": 500,
+      "sample": "Free shipping on orders over 50 €",
+      "usage": "Timestamps and promo banner text."
+     },
+     {
+      "name": "tiny",
+      "fontSize": "12px",
+      "lineHeight": 1.5,
+      "fontWeight": 400,
+      "sample": "Prices include VAT.",
+      "usage": "Legal text."
+     }
+    ]
+   }
+  ]
+ },
+ "spacing": {
+  "note": "4px base, 8px primary grid.",
+  "tokens": [
+   {
+    "name": "space-1",
+    "value": "4px",
+    "usage": "Tight icon gaps; product-grid gap at its tightest."
+   },
+   {
+    "name": "space-2",
+    "value": "8px",
+    "usage": "Base unit; button icon gaps; promo banner vertical padding."
+   },
+   {
+    "name": "space-3",
+    "value": "12px",
+    "usage": "Card internal padding; gap between product image and its text."
+   },
+   {
+    "name": "space-4",
+    "value": "16px",
+    "usage": "Standard padding, nav spacing, mobile page padding."
+   },
+   {
+    "name": "space-5",
+    "value": "20px",
+    "usage": "Product card gaps."
+   },
+   {
+    "name": "space-6",
+    "value": "24px",
+    "usage": "Section internal padding, grid gaps, tablet page padding."
+   },
+   {
+    "name": "space-7",
+    "value": "32px",
+    "usage": "Section breaks."
+   },
+   {
+    "name": "space-8",
+    "value": "48px",
+    "usage": "Major section padding; desktop page padding."
+   },
+   {
+    "name": "space-9",
+    "value": "64px",
+    "usage": "Hero section padding."
+   },
+   {
+    "name": "space-10",
+    "value": "80px",
+    "usage": "Large section spacing."
+   }
+  ]
+ },
+ "radius": {
+  "note": "Imagery is sharp; only UI gets rounded corners.",
+  "tokens": [
+   {
+    "name": "radius-none",
+    "value": "0px",
+    "usage": "Product images and hero photography."
+   },
+   {
+    "name": "radius-input",
+    "value": "8px",
+    "usage": "Form inputs other than search."
+   },
+   {
+    "name": "radius-sm",
+    "value": "18px",
+    "usage": "Small interactive elements."
+   },
+   {
+    "name": "radius-container",
+    "value": "20px",
+    "usage": "Containers and cards holding UI content."
+   },
+   {
+    "name": "radius-search",
+    "value": "24px",
+    "usage": "Search inputs and medium pills."
+   },
+   {
+    "name": "radius-pill",
+    "value": "30px",
+    "usage": "Buttons, tags and filters."
+   },
+   {
+    "name": "radius-circle",
+    "value": "50%",
+    "usage": "Circular icon buttons and avatar placeholders."
+   }
+  ]
+ },
+ "shadow": {
+  "note": "Radically flat: no card shadows, no hover lifts. Only the inset divider and the focus ring.",
+  "tokens": [
+   {
+    "name": "shadow-divider",
+    "value": "0px -1px 0px 0px #e5e5e5 inset",
+    "usage": "The single divider between sections."
+   },
+   {
+    "name": "shadow-focus",
+    "value": "0 0 0 2px rgba(39, 93, 197, 1)",
+    "usage": "Keyboard focus ring on light grounds."
+   }
+  ]
+ },
+ "breakpoint": {
+  "note": "Minimum widths of each layout tier.",
+  "tokens": [
+   {
+    "name": "bp-small-tablet",
+    "value": "640px",
+    "usage": "Two-column product grid begins; nav still collapsed."
+   },
+   {
+    "name": "bp-tablet",
+    "value": "768px",
+    "usage": "Two-column grids, 24px page padding."
+   },
+   {
+    "name": "bp-small-desktop",
+    "value": "960px",
+    "usage": "Full horizontal nav, three-column product grid."
+   },
+   {
+    "name": "bp-desktop",
+    "value": "1024px",
+    "usage": "Full layout, 48px page padding."
+   },
+   {
+    "name": "bp-large",
+    "value": "1440px",
+    "usage": "Centered max-width container."
+   }
+  ]
+ },
+ "size": {
+  "note": "Layout and touch dimensions.",
+  "tokens": [
+   {
+    "name": "container-max",
+    "value": "1920px",
+    "usage": "Max container width."
+   },
+   {
+    "name": "content-max",
+    "value": "1440px",
+    "usage": "Standard content width."
+   },
+   {
+    "name": "nav-height",
+    "value": "60px",
+    "usage": "Desktop nav bar height."
+   },
+   {
+    "name": "touch-min",
+    "value": "44px",
+    "usage": "Minimum touch target."
+   },
+   {
+    "name": "touch-nav",
+    "value": "48px",
+    "usage": "Mobile nav icon touch area."
+   },
+   {
+    "name": "pill-min-height",
+    "value": "36px",
+    "usage": "Minimum filter pill height."
+   }
+  ]
+ }
+}

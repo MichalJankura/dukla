@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# env
+.env*.local
+.env
+
+# debug
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# generated
+src/styles/tokens.generated.css
+
+# raw downloads (originals stay local, web-ready copies live in public/)
+assets/ig-raw/
+
+# local tooling
+.claude/

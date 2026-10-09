@@ -1,0 +1,542 @@
+{
+ "name": "Apple-inspired",
+ "version": 1,
+ "color": {
+  "themes": [
+   {
+    "id": "light",
+    "name": "Light"
+   },
+   {
+    "id": "dark",
+    "name": "Dark"
+   }
+  ],
+  "tokens": [
+   {
+    "name": "black",
+    "value": "#000000",
+    "usage": "Absolute black. Dark chapter canvas for immersive hero scenes; fixed in both themes."
+   },
+   {
+    "name": "pale-gray",
+    "value": "#f5f5f7",
+    "usage": "Pale gray. Light chapter canvas for feature bands, comparison blocks and editorial transitions; fixed in both themes."
+   },
+   {
+    "name": "white",
+    "value": "#ffffff",
+    "usage": "Pure white. Retail and product-list grounds, dense transactional sections; label on blue-action."
+   },
+   {
+    "name": "ink-900",
+    "value": "#1d1d1f",
+    "usage": "Near-black ink. Primary text and dark-fill controls on white and pale-gray (16.8:1 / 15.5:1)."
+   },
+   {
+    "name": "graphite-a",
+    "value": "#272729",
+    "usage": "Graphite step A. Dark cards and media-control layer on black."
+   },
+   {
+    "name": "graphite-b",
+    "value": "#262629",
+    "usage": "Graphite step B. Deeper dark utility layer for control groupings."
+   },
+   {
+    "name": "graphite-c",
+    "value": "#28282b",
+    "usage": "Graphite step C. Elevated dark supporting surfaces."
+   },
+   {
+    "name": "graphite-d",
+    "value": "#2a2a2c",
+    "usage": "Graphite step D. Darkest elevated step for separation in rich dark scenes."
+   },
+   {
+    "name": "gray-50",
+    "value": "#fafafc",
+    "usage": "Utility shell fill for filter buttons and configurator shells on white."
+   },
+   {
+    "name": "gray-300",
+    "value": "#d2d2d7",
+    "usage": "Soft border gray. Dividers and subtle outlines; decorative only (below 3:1)."
+   },
+   {
+    "name": "gray-500",
+    "value": "#86868b",
+    "usage": "Mid border gray. Field outlines in configurators and filters (3.6:1 on white); secondary text on black (5.8:1)."
+   },
+   {
+    "name": "gray-600",
+    "value": "#6e6e73",
+    "usage": "Secondary neutral gray. Helper copy and metadata on white (5.1:1) and pale-gray (4.7:1)."
+   },
+   {
+    "name": "gray-700",
+    "value": "#424245",
+    "usage": "Utility dark gray. Dark-neutral crossover for store hairlines on black."
+   },
+   {
+    "name": "blue-action",
+    "value": "#0071e3",
+    "usage": "Action blue. Primary action fills and the focus ring; white label on it holds 4.7:1. Not for body text on pale-gray (4.3:1)."
+   },
+   {
+    "name": "blue-link",
+    "value": "#0066cc",
+    "usage": "Body link blue. Inline links on white (5.6:1) and pale-gray (5.1:1)."
+   },
+   {
+    "name": "blue-link-bright",
+    "value": "#2997ff",
+    "usage": "High-luminance link blue. Links on black (7.0:1) and graphite (4.9:1)."
+   },
+   {
+    "name": "surface",
+    "value": {
+     "light": "{white}",
+     "dark": "{black}"
+    },
+    "usage": "Page ground: white retail canvas in Light, black chapter in Dark."
+   },
+   {
+    "name": "surface-alt",
+    "value": {
+     "light": "{pale-gray}",
+     "dark": "{graphite-a}"
+    },
+    "usage": "Alternating chapter band and image-first card ground."
+   },
+   {
+    "name": "surface-raised",
+    "value": {
+     "light": "{white}",
+     "dark": "{graphite-d}"
+    },
+    "usage": "Cards and panels set on surface-alt; configurator panels."
+   },
+   {
+    "name": "surface-shell",
+    "value": {
+     "light": "{gray-50}",
+     "dark": "{graphite-b}"
+    },
+    "usage": "Quiet fill for utility buttons, filter chips and input shells."
+   },
+   {
+    "name": "ink",
+    "value": {
+     "light": "{ink-900}",
+     "dark": "{pale-gray}"
+    },
+    "usage": "Primary text on surface, surface-alt and surface-raised in both themes (13:1 or more)."
+   },
+   {
+    "name": "ink-secondary",
+    "value": {
+     "light": "{gray-600}",
+     "dark": "{gray-500}"
+    },
+    "usage": "Secondary copy and metadata on surface and surface-alt. Dark theme: 5.8:1 on surface but only 4.1:1 on surface-alt (source pair kept); use it there at 17px semibold or larger."
+   },
+   {
+    "name": "line",
+    "value": {
+     "light": "{gray-300}",
+     "dark": "{gray-700}"
+    },
+    "usage": "Hairline dividers between rows and sections; decorative, never the only boundary of a control."
+   },
+   {
+    "name": "line-strong",
+    "value": {
+     "light": "{gray-500}",
+     "dark": "{gray-600}"
+    },
+    "usage": "Outlines of inputs, option tiles and filter shells (3:1 or more on surface)."
+   },
+   {
+    "name": "action",
+    "value": "{blue-action}",
+    "usage": "Fill of the primary action and selected-state borders."
+   },
+   {
+    "name": "on-action",
+    "value": "{white}",
+    "usage": "Label on an action fill (4.7:1)."
+   },
+   {
+    "name": "fill-contrast",
+    "value": {
+     "light": "{ink-900}",
+     "dark": "{pale-gray}"
+    },
+    "usage": "Restrained high-contrast button fill; dark ink on light grounds, inverts to pale gray in Dark."
+   },
+   {
+    "name": "on-fill-contrast",
+    "value": {
+     "light": "{white}",
+     "dark": "{ink-900}"
+    },
+    "usage": "Label on fill-contrast."
+   },
+   {
+    "name": "link",
+    "value": {
+     "light": "{blue-link}",
+     "dark": "{blue-link-bright}"
+    },
+    "usage": "Inline and standalone text links."
+   },
+   {
+    "name": "focus",
+    "value": "{blue-action}",
+    "usage": "Keyboard focus ring and selected state: 2px solid, 4.5:1 or more on surface in both themes."
+   },
+   {
+    "name": "nav-bg",
+    "value": {
+     "light": "rgba(0, 0, 0, 0.8)",
+     "dark": "rgba(0, 0, 0, 0.8)"
+    },
+    "usage": "Global nav bar: translucent black over content, with backdrop blur. Alpha is an assumption; the source gives no value."
+   },
+   {
+    "name": "nav-ink",
+    "value": "{pale-gray}",
+    "usage": "Nav link text on nav-bg."
+   }
+  ]
+ },
+ "type": {
+  "fonts": [],
+  "families": {
+   "display": "\"SF Pro Display\", \"Inter Tight\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+   "text": "\"SF Pro Text\", Inter, \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+  },
+  "groups": [
+   {
+    "name": "Display",
+    "family": "display",
+    "note": "SF Pro Display, semibold, tight leading and tracking. Inter Tight stands in where SF Pro is unavailable.",
+    "styles": [
+     {
+      "name": "hero-xl",
+      "fontSize": "80px",
+      "lineHeight": 1.05,
+      "fontWeight": 600,
+      "letterSpacing": "-1.2px",
+      "sample": "Built for the big picture.",
+      "usage": "Largest hero line on a black or pale chapter."
+     },
+     {
+      "name": "hero-l",
+      "fontSize": "56px",
+      "lineHeight": 1.07,
+      "fontWeight": 600,
+      "letterSpacing": "-0.28px",
+      "sample": "Light. Years ahead.",
+      "usage": "Homepage hero moments."
+     },
+     {
+      "name": "section",
+      "fontSize": "48px",
+      "lineHeight": 1.08,
+      "fontWeight": 600,
+      "letterSpacing": "-0.144px",
+      "sample": "Take a closer look.",
+      "usage": "Major chapter headings."
+     },
+     {
+      "name": "product-heading",
+      "fontSize": "40px",
+      "lineHeight": 1.1,
+      "fontWeight": 600,
+      "letterSpacing": "0px",
+      "sample": "Which one is right for you?",
+      "usage": "Product and campaign section titles."
+     },
+     {
+      "name": "feature",
+      "fontSize": "38px",
+      "lineHeight": 1.21,
+      "fontWeight": 600,
+      "letterSpacing": "0.152px",
+      "sample": "All-day battery.",
+      "usage": "Device and merchandising callouts."
+     },
+     {
+      "name": "promo",
+      "fontSize": "32px",
+      "lineHeight": 1.09,
+      "fontWeight": 600,
+      "letterSpacing": "0.128px",
+      "sample": "Trade in. Trade up.",
+      "usage": "Module-level sub-heroes; may drop to 300 for contrast lines."
+     },
+     {
+      "name": "card-title",
+      "fontSize": "28px",
+      "lineHeight": 1.14,
+      "fontWeight": 600,
+      "letterSpacing": "0.196px",
+      "sample": "Accessories",
+      "usage": "Tile and card names."
+     },
+     {
+      "name": "utility-heading",
+      "fontSize": "24px",
+      "lineHeight": 1.17,
+      "fontWeight": 600,
+      "letterSpacing": "0.216px",
+      "sample": "Choose your finish.",
+      "usage": "Configurator and grouped-content headers."
+     },
+     {
+      "name": "link-heading",
+      "fontSize": "21px",
+      "lineHeight": 1.14,
+      "fontWeight": 600,
+      "letterSpacing": "0.231px",
+      "sample": "Learn more",
+      "usage": "Large promotional links."
+     }
+    ]
+   },
+   {
+    "name": "Text",
+    "family": "text",
+    "note": "SF Pro Text for navigation, controls, labels and dense commerce copy. Inter stands in; add +0.02 to +0.06 line height when it does.",
+    "styles": [
+     {
+      "name": "subhead",
+      "fontSize": "19px",
+      "lineHeight": 1.21,
+      "fontWeight": 600,
+      "letterSpacing": "0.228px",
+      "sample": "Free delivery and returns.",
+      "usage": "Compact section intros."
+     },
+     {
+      "name": "body",
+      "fontSize": "17px",
+      "lineHeight": 1.47,
+      "fontWeight": 400,
+      "letterSpacing": "-0.374px",
+      "sample": "A durable finish and a display that is easy to read in sunlight.",
+      "usage": "Standard body and retail descriptions."
+     },
+     {
+      "name": "body-emphasis",
+      "fontSize": "17px",
+      "lineHeight": 1.24,
+      "fontWeight": 600,
+      "letterSpacing": "-0.374px",
+      "sample": "From 999 €",
+      "usage": "Emphasized labels and key values such as prices."
+     },
+     {
+      "name": "control",
+      "fontSize": "14px",
+      "lineHeight": 1.29,
+      "fontWeight": 400,
+      "letterSpacing": "-0.224px",
+      "sample": "Compare all models",
+      "usage": "Buttons, helper labels, compact nav text."
+     },
+     {
+      "name": "micro",
+      "fontSize": "12px",
+      "lineHeight": 1.33,
+      "fontWeight": 400,
+      "letterSpacing": "-0.12px",
+      "sample": "Available in 4 finishes",
+      "usage": "Fine print, micro labels, global nav links."
+     },
+     {
+      "name": "legal",
+      "fontSize": "10px",
+      "lineHeight": 1.3,
+      "fontWeight": 400,
+      "letterSpacing": "-0.08px",
+      "sample": "Prices include VAT.",
+      "usage": "Dense metadata and legal support text."
+     }
+    ]
+   }
+  ]
+ },
+ "spacing": {
+  "note": "8px scaffolding with dense micro-steps for precision alignment. Values are the ones the source reuses, in px.",
+  "tokens": [
+   {
+    "name": "space-2",
+    "value": "2px",
+    "usage": "Hairline nudges, dot gaps."
+   },
+   {
+    "name": "space-4",
+    "value": "4px",
+    "usage": "Icon-to-label gap."
+   },
+   {
+    "name": "space-6",
+    "value": "6px",
+    "usage": "Tight chip padding."
+   },
+   {
+    "name": "space-7",
+    "value": "7px",
+    "usage": "Optical alignment of small labels."
+   },
+   {
+    "name": "space-8",
+    "value": "8px",
+    "usage": "Base unit; vertical padding of compact buttons."
+   },
+   {
+    "name": "space-9",
+    "value": "9px",
+    "usage": "Optical alignment inside nav rows."
+   },
+   {
+    "name": "space-10",
+    "value": "10px",
+    "usage": "Gap between stacked options."
+   },
+   {
+    "name": "space-12",
+    "value": "12px",
+    "usage": "Gap inside cards and between related controls."
+   },
+   {
+    "name": "space-14",
+    "value": "14px",
+    "usage": "Utility interval: list spacing in dense retail."
+   },
+   {
+    "name": "space-15",
+    "value": "15px",
+    "usage": "Horizontal padding of compact buttons."
+   },
+   {
+    "name": "space-17",
+    "value": "17px",
+    "usage": "Field and option-tile padding."
+   },
+   {
+    "name": "space-20",
+    "value": "20px",
+    "usage": "Component padding and card gutters."
+   }
+  ]
+ },
+ "radius": {
+  "note": "Purposeful tiers by component class: field, card, spotlight, capsule, circle. Never one radius for everything.",
+  "tokens": [
+   {
+    "name": "radius-xs",
+    "value": "5px",
+    "usage": "Tiny utility links and tags."
+   },
+   {
+    "name": "radius-sm",
+    "value": "8px",
+    "usage": "Standard rectangular buttons and compact fields."
+   },
+   {
+    "name": "radius-md",
+    "value": "12px",
+    "usage": "Inputs, option tiles, configurator controls."
+   },
+   {
+    "name": "radius-lg",
+    "value": "18px",
+    "usage": "Cards, module frames, commerce panels."
+   },
+   {
+    "name": "radius-xl",
+    "value": "28px",
+    "usage": "Larger modules and carousel lanes."
+   },
+   {
+    "name": "radius-2xl",
+    "value": "36px",
+    "usage": "Spotlight containers."
+   },
+   {
+    "name": "radius-capsule",
+    "value": "56px",
+    "usage": "Large capsule actions."
+   },
+   {
+    "name": "radius-pill",
+    "value": "980px",
+    "usage": "Signature elongated pill CTAs and chips."
+   },
+   {
+    "name": "radius-circle",
+    "value": "50%",
+    "usage": "Circular media and carousel controls."
+   }
+  ]
+ },
+ "shadow": {
+  "note": "Depth is restrained: tonal contrast and surface stepping first. Shadows only on highlighted merchandise cards; alpha from the source (0.08 to 0.22), offsets assumed.",
+  "tokens": [
+   {
+    "name": "shadow-card",
+    "value": "2px 4px 12px rgba(0, 0, 0, 0.08)",
+    "usage": "Highlighted card at rest."
+   },
+   {
+    "name": "shadow-card-hover",
+    "value": "2px 4px 16px rgba(0, 0, 0, 0.16)",
+    "usage": "Highlighted card on hover."
+   },
+   {
+    "name": "shadow-overlay",
+    "value": "0 8px 24px rgba(0, 0, 0, 0.22)",
+    "usage": "Floating overlays and menus; the deepest step."
+   }
+  ]
+ },
+ "breakpoint": {
+  "note": "Minimum widths of each layout tier.",
+  "tokens": [
+   {
+    "name": "bp-mobile",
+    "value": "375px",
+    "usage": "One-column modules, compact action rows."
+   },
+   {
+    "name": "bp-tablet",
+    "value": "641px",
+    "usage": "Mixed one-to-two column transitions."
+   },
+   {
+    "name": "bp-tablet-wide",
+    "value": "834px",
+    "usage": "Stable multi-column merchandising."
+   },
+   {
+    "name": "bp-desktop",
+    "value": "1024px",
+    "usage": "Full retail layouts and comparison tables."
+   },
+   {
+    "name": "bp-desktop-wide",
+    "value": "1241px",
+    "usage": "Hero expansion and broader section spacing."
+   },
+   {
+    "name": "bp-large",
+    "value": "1441px",
+    "usage": "Maximum chapter breathing room."
+   }
+  ]
+ }
+}
