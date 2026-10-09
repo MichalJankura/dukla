@@ -7,14 +7,17 @@ import { JsonLd } from '@/ui/JsonLd';
 import { VariantSwitch } from './VariantSwitch';
 import { variantIds, variants, type VariantId } from './index';
 
-/** Server entry for a page: gathers data once and hands it to the chosen variant. */
+/**
+ * Build-time entry for a page. The program is snapshotted for the build day (static HTML,
+ * structured data); the variant re-evaluates it in the browser via useLiveEvents.
+ */
 export function VariantView({ id }: { id: VariantId }) {
   const events = getEventsSnapshot();
   const { Page } = variants[id];
 
   return (
     <>
-      <Page events={events} venue={venue} gallery={galleryItems} menu={menuItems} />
+      <Page buildDay={events.businessDay} venue={venue} gallery={galleryItems} menu={menuItems} />
       <JsonLd data={eventsJsonLd(events.upcoming, venue)} />
       {siteConfig.showVariantSwitch && (
         <VariantSwitch

@@ -6,14 +6,17 @@ const BUSINESS_DAY_CUTOFF_HOURS = 5;
 const WEEKDAYS_SHORT = ['Ne', 'Po', 'Ut', 'St', 'Št', 'Pi', 'So'] as const;
 const WEEKDAYS_LONG = ['Nedeľa', 'Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota'] as const;
 
+const dateFormatters = new Map<string, Intl.DateTimeFormat>();
+
 /** Calendar date (YYYY-MM-DD) of an instant in the given time zone. */
 export function isoDateInZone(instant: Date, timeZone: string = VENUE_TIME_ZONE): string {
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(instant);
+  let formatter = dateFormatters.get(timeZone);
+  if (!formatter) {
+    // en-CA formats as YYYY-MM-DD.
+    formatter = new Intl.DateTimeFormat('en-CA', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' });
+    dateFormatters.set(timeZone, formatter);
+  }
+  return formatter.format(instant);
 }
 
 /** The venue's business day: 01:30 on Saturday still belongs to Friday night. */

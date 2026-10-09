@@ -13,7 +13,7 @@
     "dev": "next dev",
     "prebuild": "npm run tokens",
     "build": "next build",
-    "start": "next start",
+    "preview": "npx serve out",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

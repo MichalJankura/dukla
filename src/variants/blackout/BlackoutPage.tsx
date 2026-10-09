@@ -1,3 +1,6 @@
+'use client';
+
+import { useLiveEvents } from '@/features/events/useLiveEvents';
 import { cn } from '@/lib/cn';
 import type { VariantPageProps } from '../types';
 import { Header } from './Header';
@@ -12,7 +15,9 @@ import { page, sectionY } from './ui';
  * Loud and poster-like: graphite grounds, condensed uppercase, edge-to-edge photography,
  * a dense flyer grid and a cyan ticker. Flat — colour comes from photos and Dukla cyan only.
  */
-export function BlackoutPage({ events, venue, gallery, menu }: VariantPageProps) {
+export function BlackoutPage({ buildDay, venue, gallery, menu }: VariantPageProps) {
+  const events = useLiveEvents(buildDay);
+
   return (
     <div data-variant="blackout" className="min-h-dvh bg-bo-grey-900 font-bo-text text-white">
       <Header venue={venue} events={events} />
@@ -27,7 +32,7 @@ export function BlackoutPage({ events, venue, gallery, menu }: VariantPageProps)
         <Gallery items={gallery} venue={venue} />
         <Visit venue={venue} />
       </main>
-      <Footer venue={venue} />
+      <Footer venue={venue} year={events.businessDay.slice(0, 4)} />
     </div>
   );
 }

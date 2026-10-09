@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { getEventsSnapshot } from './events.repo';
+import { getEventsSnapshot, snapshotForBusinessDay } from './events.repo';
 import { countByFilter, filterEvents } from './filter';
 import { formatEntry, formatPartyMeta, formatPrice } from './format';
 import { timelineStatus } from './status';
 import type { EventRecord } from './types';
 
-const nbsp = (value: string) => value.replace(/ /g, ' ');
+const nbsp = (value: string) => value.replaceAll(String.fromCharCode(0xa0), ' ');
 
 const records: EventRecord[] = [
   { id: 'a', kind: 'party', title: 'A', date: '2026-10-09', startTime: '19:00', lineup: ['DJ Lukas'] },
@@ -46,6 +46,13 @@ describe('getEventsSnapshot', () => {
 
   it('features the next two nights followed by promos', () => {
     expect(snapshot.featured.map((e) => e.id)).toEqual(['a', 'b', 'p']);
+  });
+
+  it('drops nights that passed without being announced', () => {
+    const later = snapshotForBusinessDay('2026-10-11', records);
+    expect(later.tonight).toBeNull();
+    expect(later.upcoming.map((e) => e.id)).toEqual(['c']);
+    expect(later.past.map((e) => e.id)).toEqual(['a', 'd', 'e']);
   });
 });
 

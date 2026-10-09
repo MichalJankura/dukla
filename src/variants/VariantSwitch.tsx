@@ -16,7 +16,7 @@ export function VariantSwitch({ current, options }: VariantSwitchProps) {
       {options.map((option) => (
         <Link
           key={option.id}
-          href={`/${option.id}`}
+          href={`/${option.id}/`}
           aria-current={option.id === current ? 'page' : undefined}
           className={cn(
             'inline-flex min-h-9 items-center rounded-full px-3 font-medium transition-colors',

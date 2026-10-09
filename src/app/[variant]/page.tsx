@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { isVariantId, variantIds, variants } from '@/variants';
 import { VariantView } from '@/variants/VariantView';
 
-export const revalidate = 3600;
 export const dynamicParams = false;
 
 interface VariantPageProps {

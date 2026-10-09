@@ -31,7 +31,7 @@ export function ProgramSpotlight({ slides, reserveUrl, header }: ProgramSpotligh
   const [[index, direction], setPosition] = useState<[number, number]>([0, 0]);
   const reduceMotion = useReducedMotion();
   const count = slides.length;
-  const slide = slides[index];
+  const slide = slides[Math.min(index, count - 1)];
 
   const step = (delta: number) => setPosition(([current]) => [(current + delta + count) % count, delta]);
   const jump = (target: number) => setPosition(([current]) => [target, target >= current ? 1 : -1]);

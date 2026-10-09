@@ -3,7 +3,7 @@ import type { Venue } from '@/features/venue/types';
 import { cn, linkTargetProps } from '@/lib/cn';
 import { container, sectionLinks } from './ui';
 
-export function Footer({ venue }: { venue: Venue }) {
+export function Footer({ venue, year }: { venue: Venue; year: string }) {
   const { address, links } = venue;
 
   return (
@@ -34,7 +34,7 @@ export function Footer({ venue }: { venue: Venue }) {
         </div>
         <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-ag-graphite-d pt-6 text-ag-micro">
           <span>
-            © {new Date().getFullYear()} {venue.name} · {address.street}, {address.postalCode} {address.city}
+            © {year} {venue.name} · {address.street}, {address.postalCode} {address.city}
           </span>
           <span>{venue.ageNotice}</span>
         </div>

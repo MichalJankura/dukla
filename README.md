@@ -20,15 +20,16 @@ npm run dev        # http://localhost:3000
 
 | Príkaz                          | Čo robí                                                               |
 | ------------------------------- | --------------------------------------------------------------------- |
-| `npm run dev` / `npm run build` | vývoj / produkčný build (pred oboma sa vygenerujú tokeny)             |
+| `npm run dev` / `npm run build` | vývoj / statický export do `out/` (pred oboma sa vygenerujú tokeny)   |
 | `npm run check`                 | tokeny + TypeScript + ESLint + testy                                  |
 | `npm test`                      | unit testy domény (Vitest)                                            |
 | `npm run tokens`                | znovu vygeneruje `src/styles/tokens.generated.css` z `design/tokens/` |
 
 ## Technológie a prečo
 
-- **Next.js 16 (App Router)** namiesto čistého Reactu: stránky sú statické a každú hodinu sa obnovia (ISR), takže štítky „Dnes / Zajtra / Archív“ sedia bez nového deployu. Navyše SEO metadáta, JSON-LD (`BarOrPub` a `Event`) a `next/image` (AVIF/WebP).
-- **React 19 + TypeScript (strict)**: interaktívne sú len ostrovy (karusel, filter, animácie), zvyšok sú Server Components.
+- **Next.js 16 (App Router) so statickým exportom** (`output: 'export'`): build vytvorí čisté HTML/CSS/JS v `out/`, ktoré beží na bezplatnom statickom hostingu. Navyše SEO metadáta, JSON-LD (`BarOrPub` a `Event`), sitemap a fonty hostované s webom.
+- **Štítky „Dnes / Zajtra / Archív“ sa počítajú v prehliadači** (`useLiveEvents`): HTML sa vygeneruje pre deň buildu, po načítaní ich prepočíta podľa hodín návštevníka, takže sedia aj bez nového buildu.
+- **React 19 + TypeScript (strict)**.
 - **Tailwind CSS v4**: tokeny oboch dizajn systémov sa generujú do `@theme` s prefixmi `ag-*` (Afterglow) a `bo-*` (Blackout), farby značky sú `dukla-*`.
 - **Motion** (Framer Motion) na komponentové animácie, **GSAP + ScrollTrigger** na scroll choreografiu, **Lenis** na plynulý scroll.
 - **Three.js zámerne nie**: pridal by ~150 kB JS a zhoršil výkon na mobiloch. Žiaru loga rieši CSS. Kandidát na v2 (3D „D“ v hero).
@@ -57,7 +58,7 @@ src/
    └─ VariantView.tsx    načíta dáta a vyrenderuje zvolený variant
 ```
 
-**Pravidlo vrstiev:** komponenty vo `variants/` nikdy nefetchujú ani nepočítajú dátumy. Dostanú hotový `EventsSnapshot` z `features/events/events.repo.ts`, takže výmena vizuálu nemení logiku.
+**Pravidlo vrstiev:** komponenty vo `variants/` nikdy nefetchujú ani nepočítajú dátumy. Stránka variantu získa `EventsSnapshot` z hooku `useLiveEvents` (logika je v `features/events/`) a posiela ho sekciám, takže výmena vizuálu nemení logiku.
 
 ## Ako upraviť obsah
 
@@ -66,16 +67,14 @@ src/
 - **Vstupné:** `entry: [{ price: 3, until: '22:00' }, { price: 5 }]` sa zobrazí ako „vstup 3 € do 22:00, potom 5 €“.
 - **Otváracie hodiny, odkazy:** `src/content/venue.ts`.
 
-## Nasadenie (DigitalOcean App Platform)
+## Nasadenie (DigitalOcean App Platform, Static Site)
 
-Web potrebuje bežiaci Node.js server (`next start`), nie len statický hosting — inak nefunguje hodinová obnova programu.
-
-1. **Create App → GitHub →** repo `MichalJankura/dukla`, vetva `main`, _Autodeploy_ zapnutý.
-2. Typ **Web Service**, prostredie **Node.js** (zistí sa samo z `package.json`).
+1. **Create App → GitHub →** repo `MichalJankura/dukla`, vetva `main`, _Autodeploy_ zapnutý (každý push = nový build).
+2. Typ **Static Site**, buildpack **Node.js**.
    - Build command: `npm run build`
-   - Run command: `npm start`
-   - HTTP port: `8080` (App Platform ho odovzdá v premennej `PORT`, ktorú `next start` číta)
-3. **Environment variables** (scope _Build & Run_ — `NEXT_PUBLIC_*` sa vkladajú do kódu pri builde):
+   - **Output directory: `out`** — musí byť vyplnené; inak App Platform nájde `public/` a zverejní len obrázky.
+   - Error document: `404.html`
+3. **Environment variables** (scope _Build time_ — `NEXT_PUBLIC_*` sa vkladajú do HTML pri builde):
 
    | Premenná                          | Hodnota                            |
    | --------------------------------- | ---------------------------------- |
@@ -86,6 +85,10 @@ Web potrebuje bežiaci Node.js server (`next start`), nie len statický hosting 
 4. Región **Frankfurt (fra)** — najbližšie k Slovensku.
 
 Rovnaké nastavenie je v [`.do/app.yaml`](.do/app.yaml) (dá sa použiť cez `doctl apps create --spec .do/app.yaml`).
+
+Statický výstup si vieš pozrieť aj lokálne: `npm run build` a potom `npm run preview` (alebo `python -m http.server -d out`).
+
+Obmedzenia statického režimu: žiadny server, takže ani optimalizácia obrázkov za behu (obrázky v `public/` sú už v WebP) a žiadne HTTP hlavičky z `next.config.ts`. Zmena obsahu = push do `main` → DigitalOcean spraví nový build.
 
 **Doména `duklaclub.me` (Namecheap):** v App Platform → _Settings → Domains_ pridaj `duklaclub.me` a `www.duklaclub.me`. DigitalOcean ukáže, aké DNS záznamy nastaviť v Namecheap (_Domain List → Manage → Advanced DNS_); HTTPS certifikát vystaví sám.
 

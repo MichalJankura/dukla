@@ -3,15 +3,11 @@ import { businessDay } from './date';
 import { byDateAsc, byDateDesc, timelineStatus } from './status';
 import type { EventRecord, EventsSnapshot, PartyView, PromoView } from './types';
 
-/**
- * Builds the program as seen at `now`. Pages are statically generated and revalidated,
- * so "today" is recomputed at most once per revalidation window.
- */
-export function getEventsSnapshot(
-  now: Date = new Date(),
+/** The program as seen on a given business day (YYYY-MM-DD). */
+export function snapshotForBusinessDay(
+  today: string,
   records: readonly EventRecord[] = eventRecords,
 ): EventsSnapshot {
-  const today = businessDay(now);
   const parties: PartyView[] = [];
   const promos: PromoView[] = [];
 
@@ -21,7 +17,8 @@ export function getEventsSnapshot(
   }
 
   const upcoming = parties.filter((event) => event.status !== 'past').sort(byDateAsc);
-  const past = parties.filter((event) => event.status === 'past').sort(byDateDesc);
+  // A night that passed without ever being announced has nothing to show in the archive.
+  const past = parties.filter((event) => event.status === 'past' && !event.tba).sort(byDateDesc);
 
   return {
     businessDay: today,
@@ -31,4 +28,15 @@ export function getEventsSnapshot(
     promos,
     featured: [...upcoming.slice(0, 2), ...promos],
   };
+}
+
+/**
+ * The program as seen at `now`. The site is exported as static HTML, so this runs at build time
+ * for the initial markup; useLiveEvents recomputes it in the visitor's browser.
+ */
+export function getEventsSnapshot(
+  now: Date = new Date(),
+  records: readonly EventRecord[] = eventRecords,
+): EventsSnapshot {
+  return snapshotForBusinessDay(businessDay(now), records);
 }

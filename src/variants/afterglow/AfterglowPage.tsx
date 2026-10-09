@@ -1,3 +1,6 @@
+'use client';
+
+import { useLiveEvents } from '@/features/events/useLiveEvents';
 import type { VariantPageProps } from '../types';
 import { Bar } from './Bar';
 import { DayNight } from './DayNight';
@@ -13,7 +16,9 @@ import { Visit } from './Visit';
  * Cinematic and calm: the scroll alternates black "night" and pale "day" chapters,
  * the logo's glow is the only light source, Dukla cyan replaces the system's blue.
  */
-export function AfterglowPage({ events, venue, gallery, menu }: VariantPageProps) {
+export function AfterglowPage({ buildDay, venue, gallery, menu }: VariantPageProps) {
+  const events = useLiveEvents(buildDay);
+
   return (
     <div data-variant="afterglow" className="min-h-dvh bg-ag-black font-ag-text text-ag-pale-gray">
       <Nav venue={venue} />
@@ -25,7 +30,7 @@ export function AfterglowPage({ events, venue, gallery, menu }: VariantPageProps
         <Gallery items={gallery} venue={venue} />
         <Visit venue={venue} />
       </main>
-      <Footer venue={venue} />
+      <Footer venue={venue} year={events.businessDay.slice(0, 4)} />
     </div>
   );
 }

@@ -198,7 +198,7 @@ export function Visit({ venue }: { venue: Venue }) {
   );
 }
 
-export function Footer({ venue }: { venue: Venue }) {
+export function Footer({ venue, year }: { venue: Venue; year: string }) {
   const { address, links } = venue;
   const column = 'flex flex-col text-bo-link-small';
   return (
@@ -236,7 +236,7 @@ export function Footer({ venue }: { venue: Venue }) {
         </div>
         <div className={cn('flex flex-wrap justify-between gap-x-6 gap-y-2 pt-5 text-bo-tiny', dividerTop)}>
           <span>
-            © {new Date().getFullYear()} {venue.name}
+            © {year} {venue.name}
           </span>
           <span>{venue.ageNotice}</span>
         </div>
