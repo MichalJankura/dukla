@@ -1,9 +1,11 @@
 import Image from 'next/image';
+import type { Operator } from '@/features/legal/operator';
 import type { Venue } from '@/features/venue/types';
 import { cn, linkTargetProps } from '@/lib/cn';
+import { OperatorInfo } from '@/ui/OperatorInfo';
 import { container, sectionLinks } from './ui';
 
-export function Footer({ venue, year }: { venue: Venue; year: string }) {
+export function Footer({ venue, operator, year }: { venue: Venue; operator: Operator; year: string }) {
   const { address, links } = venue;
 
   return (
@@ -32,11 +34,18 @@ export function Footer({ venue, year }: { venue: Venue; year: string }) {
             </ul>
           </nav>
         </div>
-        <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-ag-graphite-d pt-6 text-ag-micro">
-          <span>
-            © {year} {venue.name} · {address.street}, {address.postalCode} {address.city}
-          </span>
-          <span>{venue.ageNotice}</span>
+        <div className="flex flex-col gap-4 border-t border-ag-graphite-d pt-6 text-ag-micro">
+          <div className="flex flex-wrap justify-between gap-x-6 gap-y-2">
+            <span>
+              © {year} {venue.name} · {address.street}, {address.postalCode} {address.city}
+            </span>
+            <span>{venue.ageNotice}</span>
+          </div>
+          <OperatorInfo
+            operator={operator}
+            className="flex flex-col gap-1.5 leading-relaxed"
+            linkClassName="py-2 text-ag-gray-300 hover:text-dukla-cyan"
+          />
         </div>
       </div>
     </footer>

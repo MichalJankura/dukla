@@ -1,4 +1,5 @@
 import type { GalleryItem, MenuItem } from '@/features/catalog/types';
+import type { Operator } from '@/features/legal/operator';
 import type { Venue } from '@/features/venue/types';
 
 /**
@@ -11,4 +12,5 @@ export interface VariantPageProps {
   venue: Venue;
   gallery: readonly GalleryItem[];
   menu: readonly MenuItem[];
+  operator: Operator;
 }

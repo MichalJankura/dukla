@@ -1,4 +1,5 @@
 import { galleryItems, menuItems } from '@/content/catalog';
+import { operator } from '@/content/operator';
 import { venue } from '@/content/venue';
 import { siteConfig } from '@/config/site';
 import { getEventsSnapshot } from '@/features/events/events.repo';
@@ -17,7 +18,13 @@ export function VariantView({ id }: { id: VariantId }) {
 
   return (
     <>
-      <Page buildDay={events.businessDay} venue={venue} gallery={galleryItems} menu={menuItems} />
+      <Page
+        buildDay={events.businessDay}
+        venue={venue}
+        gallery={galleryItems}
+        menu={menuItems}
+        operator={operator}
+      />
       <JsonLd data={eventsJsonLd(events.upcoming, venue)} />
       {siteConfig.showVariantSwitch && (
         <VariantSwitch

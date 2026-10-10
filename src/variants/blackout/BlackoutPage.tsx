@@ -15,7 +15,7 @@ import { page, sectionY } from './ui';
  * Loud and poster-like: graphite grounds, condensed uppercase, edge-to-edge photography,
  * a dense flyer grid and a cyan ticker. Flat — colour comes from photos and Dukla cyan only.
  */
-export function BlackoutPage({ buildDay, venue, gallery, menu }: VariantPageProps) {
+export function BlackoutPage({ buildDay, venue, gallery, menu, operator }: VariantPageProps) {
   const events = useLiveEvents(buildDay);
 
   return (
@@ -32,7 +32,7 @@ export function BlackoutPage({ buildDay, venue, gallery, menu }: VariantPageProp
         <Gallery items={gallery} venue={venue} />
         <Visit venue={venue} />
       </main>
-      <Footer venue={venue} year={events.businessDay.slice(0, 4)} />
+      <Footer venue={venue} operator={operator} year={events.businessDay.slice(0, 4)} />
     </div>
   );
 }

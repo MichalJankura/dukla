@@ -2,9 +2,11 @@ import Image from 'next/image';
 import type { GalleryItem, MenuItem } from '@/features/catalog/types';
 import { formatPrice } from '@/features/events/format';
 import { formatDayHours, formatNightSummary, openingRows } from '@/features/venue/hours';
+import type { Operator } from '@/features/legal/operator';
 import type { Venue } from '@/features/venue/types';
 import { cn, linkTargetProps } from '@/lib/cn';
 import { MapEmbed } from '@/ui/MapEmbed';
+import { OperatorInfo } from '@/ui/OperatorInfo';
 import { Drift } from '@/ui/motion/Drift';
 import { Reveal } from '@/ui/motion/Reveal';
 import { STAGGER_SECONDS } from '@/ui/motion/presets';
@@ -198,7 +200,7 @@ export function Visit({ venue }: { venue: Venue }) {
   );
 }
 
-export function Footer({ venue, year }: { venue: Venue; year: string }) {
+export function Footer({ venue, operator, year }: { venue: Venue; operator: Operator; year: string }) {
   const { address, links } = venue;
   const column = 'flex flex-col text-bo-link-small';
   return (
@@ -234,11 +236,18 @@ export function Footer({ venue, year }: { venue: Venue; year: string }) {
             </span>
           </div>
         </div>
-        <div className={cn('flex flex-wrap justify-between gap-x-6 gap-y-2 pt-5 text-bo-tiny', dividerTop)}>
-          <span>
-            © {year} {venue.name}
-          </span>
-          <span>{venue.ageNotice}</span>
+        <div className={cn('flex flex-col gap-4 pt-5 text-bo-tiny', dividerTop)}>
+          <div className="flex flex-wrap justify-between gap-x-6 gap-y-2">
+            <span>
+              © {year} {venue.name}
+            </span>
+            <span>{venue.ageNotice}</span>
+          </div>
+          <OperatorInfo
+            operator={operator}
+            className="flex flex-col gap-1"
+            linkClassName="py-2 text-bo-grey-400 underline-offset-2 hover:text-white hover:underline"
+          />
         </div>
       </div>
     </footer>

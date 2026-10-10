@@ -16,7 +16,7 @@ import { Visit } from './Visit';
  * Cinematic and calm: the scroll alternates black "night" and pale "day" chapters,
  * the logo's glow is the only light source, Dukla cyan replaces the system's blue.
  */
-export function AfterglowPage({ buildDay, venue, gallery, menu }: VariantPageProps) {
+export function AfterglowPage({ buildDay, venue, gallery, menu, operator }: VariantPageProps) {
   const events = useLiveEvents(buildDay);
 
   return (
@@ -30,7 +30,7 @@ export function AfterglowPage({ buildDay, venue, gallery, menu }: VariantPagePro
         <Gallery items={gallery} venue={venue} />
         <Visit venue={venue} />
       </main>
-      <Footer venue={venue} year={events.businessDay.slice(0, 4)} />
+      <Footer venue={venue} operator={operator} year={events.businessDay.slice(0, 4)} />
     </div>
   );
 }

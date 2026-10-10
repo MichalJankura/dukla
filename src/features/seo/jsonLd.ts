@@ -1,6 +1,7 @@
 import { absoluteUrl } from '@/config/site';
 import { zonedDateTime, addDays } from '@/features/events/date';
 import type { PartyView } from '@/features/events/types';
+import type { Operator } from '@/features/legal/operator';
 import { openingHoursSpecification } from '@/features/venue/hours';
 import type { Venue } from '@/features/venue/types';
 
@@ -14,7 +15,7 @@ function postalAddress(venue: Venue) {
   };
 }
 
-export function venueJsonLd(venue: Venue) {
+export function venueJsonLd(venue: Venue, operator: Operator) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BarOrPub',
@@ -25,6 +26,20 @@ export function venueJsonLd(venue: Venue) {
     address: postalAddress(venue),
     sameAs: [venue.links.instagram, venue.links.facebook],
     openingHoursSpecification: openingHoursSpecification(venue.hours.night),
+    parentOrganization: {
+      '@type': 'Organization',
+      legalName: operator.name,
+      taxID: operator.dic,
+      vatID: operator.icDph,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: operator.address.street,
+        postalCode: operator.address.postalCode,
+        addressLocality: operator.address.city,
+        addressCountry: operator.address.countryCode,
+      },
+      ...(operator.email ? { email: operator.email } : {}),
+    },
   };
 }
 

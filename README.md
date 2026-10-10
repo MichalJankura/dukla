@@ -66,6 +66,15 @@ src/
 - **Neohlásená noc:** `tba: true` zobrazí „Ohlásime čoskoro“ a vynechá ju zo štruktúrovaných dát.
 - **Vstupné:** `entry: [{ price: 3, until: '22:00' }, { price: 5 }]` sa zobrazí ako „vstup 3 € do 22:00, potom 5 €“.
 - **Otváracie hodiny, odkazy:** `src/content/venue.ts`.
+- **Prevádzkovateľ (pätička, zásady cookies, JSON-LD):** `src/content/operator.ts`.
+
+## Cookies a Google Analytics
+
+- **Bez súhlasu sa do Googlu nič neposiela.** Inline skript v `app/layout.tsx` nastaví Google Consent Mode v2 na `denied` a `gtag.js` sa načíta až po súhlase (`ui/consent/Analytics.tsx`).
+- **Cookie lišta** (`ui/consent/ConsentBanner.tsx`) má rovnocenné tlačidlá „Prijať všetko“ a „Odmietnuť“ a podrobné nastavenia. Voľba sa ukladá do `localStorage` (`dukla-consent`) na 12 mesiacov.
+- **Zmena súhlasu:** „Nastavenia cookies“ v pätičke a na stránke `/cookies/`. Pri odvolaní sa cookies `_ga*` zmažú.
+- **Pravidlá súhlasu** (verzia, platnosť, validácia GA ID) sú v `features/consent/consent.ts` a pokrývajú ich testy. Keď pribudne nová kategória (napr. reklamy alebo Meta Pixel), zvýš `CONSENT_VERSION`, aby sa návštevníkov web opýtal znova.
+- GA4 ID `G-5QQ4H9GZST` sa použije len v produkčnom builde. Lokálne sa meria len so `NEXT_PUBLIC_GA_ID`.
 
 ## Nasadenie (DigitalOcean App Platform, Static Site)
 
@@ -98,6 +107,8 @@ Obmedzenia statického režimu: žiadny server, takže ani optimalizácia obráz
 - [ ] Cena vstupu na Oktoberfest (plagát je orezaný).
 - [ ] Položky baru: koktaily, káva, ceny, nápojový lístok (PDF).
 - [ ] Výber finálneho variantu → `NEXT_PUBLIC_VARIANT`, vypnúť prepínač.
+- [ ] Kontaktný e-mail prevádzkovateľa do `src/content/operator.ts` (§ 4 zákona č. 22/2004 Z. z.).
+- [ ] Právna kontrola textu stránky `/cookies/`, prípadne doplniť zásady ochrany osobných údajov.
 - [ ] v2: napojenie Instagram Graph API pre galériu (vyžaduje Business účet prepojený s FB stránkou), alebo headless CMS pre program.
 
 Animácie a ich pravidlá sú popísané v [docs/ANIMACIE.md](docs/ANIMACIE.md).

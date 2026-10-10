@@ -13,7 +13,12 @@ export function isoDateInZone(instant: Date, timeZone: string = VENUE_TIME_ZONE)
   let formatter = dateFormatters.get(timeZone);
   if (!formatter) {
     // en-CA formats as YYYY-MM-DD.
-    formatter = new Intl.DateTimeFormat('en-CA', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' });
+    formatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
     dateFormatters.set(timeZone, formatter);
   }
   return formatter.format(instant);

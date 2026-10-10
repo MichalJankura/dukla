@@ -2,8 +2,12 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Inter_Tight, Oswald } from 'next/font/google';
 import type { ReactNode } from 'react';
 import { siteConfig } from '@/config/site';
+import { operator } from '@/content/operator';
 import { venue } from '@/content/venue';
+import { consentBootstrapScript } from '@/features/consent/bootstrap';
 import { venueJsonLd } from '@/features/seo/jsonLd';
+import { Analytics } from '@/ui/consent/Analytics';
+import { ConsentBanner } from '@/ui/consent/ConsentBanner';
 import { JsonLd } from '@/ui/JsonLd';
 import { SmoothScroll } from '@/ui/motion/SmoothScroll';
 import '@/styles/globals.css';
@@ -49,12 +53,20 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const gaId = siteConfig.gaMeasurementId;
+
   return (
     <html lang="sk" className={`${inter.variable} ${interTight.variable} ${oswald.variable}`}>
+      <head>
+        {/* Consent Mode defaults must exist before any Google tag can run. */}
+        {gaId && <script dangerouslySetInnerHTML={{ __html: consentBootstrapScript(gaId) }} />}
+      </head>
       <body>
         {children}
         <SmoothScroll />
-        <JsonLd data={venueJsonLd(venue)} />
+        <ConsentBanner />
+        {gaId && <Analytics measurementId={gaId} />}
+        <JsonLd data={venueJsonLd(venue, operator)} />
       </body>
     </html>
   );
