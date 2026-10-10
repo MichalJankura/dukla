@@ -24,13 +24,20 @@ export const eventRecords = [
     instagramUrl: 'https://www.instagram.com/p/DeKYp0nmylD/',
   },
   {
-    id: '2026-10-10-sobota',
+    id: '2026-10-10-finlandia-party',
     kind: 'party',
-    title: 'Sobota v Dukle',
+    title: 'Finlandia Party',
     date: '2026-10-10',
-    startTime: '19:00',
-    tba: true,
-    description: 'Line-up a tému večera ohlásime na Instagrame.',
+    startTime: '19:00', // plagát čas neuvádza → otváracie hodiny
+    lineup: ['DJ Lukas'],
+    description: 'Hity overené časom: 90’s, 2000’s aj súčasnosť. Každý 3. panák Finlandia za 0,01 €.',
+    entry: [{ price: 3, until: '22:00' }, { price: 5 }],
+    poster: {
+      src: '/ig/dukla-finlandia-party.webp',
+      alt: 'Plagát Finlandia Party, sobota 10. 10., DJ Lukas, 90’s, 2000’s a súčasnosť, každý 3. panák za 0,01 €',
+      width: 608,
+      height: 914,
+    },
   },
   {
     id: '2026-10-03-noc-plna-piva',
