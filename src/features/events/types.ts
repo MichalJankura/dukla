@@ -5,6 +5,15 @@ export interface ImageAsset {
   height: number;
 }
 
+/** A silent looping clip, offered in several encodings (first supported wins). */
+export interface VideoAsset {
+  sources: { src: string; type: string }[];
+  /** Still frame shown before playback and whenever motion is off. */
+  poster: string;
+  width: number;
+  height: number;
+}
+
 /** One price tier of the door fee, e.g. 3 € until 22:00, then 5 €. */
 export interface EntryTier {
   price: number;

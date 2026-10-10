@@ -38,4 +38,13 @@ export const venue: Venue = {
     width: 1440,
     height: 960,
   },
+  heroVideo: {
+    sources: [
+      { src: '/video/dukla-loop.webm', type: 'video/webm' },
+      { src: '/video/dukla-loop.mp4', type: 'video/mp4' },
+    ],
+    poster: '/video/dukla-loop-poster.webp',
+    width: 540,
+    height: 848,
+  },
 };
