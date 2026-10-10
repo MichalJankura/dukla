@@ -40,5 +40,4 @@ export interface Venue {
     closedLabel: string;
   };
   heroImage: ImageAsset;
-  ageNotice: string;
 }

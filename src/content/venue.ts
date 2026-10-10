@@ -38,5 +38,4 @@ export const venue: Venue = {
     width: 1440,
     height: 960,
   },
-  ageNotice: 'Alkoholické nápoje podávame iba osobám starším ako 18 rokov.',
 };

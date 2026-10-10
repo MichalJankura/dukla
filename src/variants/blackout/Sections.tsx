@@ -235,12 +235,9 @@ export function Footer({ venue, operator, year }: { venue: Venue; operator: Oper
           </div>
         </div>
         <div className={cn('flex flex-col gap-4 pt-5 text-bo-tiny', dividerTop)}>
-          <div className="flex flex-wrap justify-between gap-x-6 gap-y-2">
-            <span>
-              © {year} {venue.name}
-            </span>
-            <span>{venue.ageNotice}</span>
-          </div>
+          <p className="m-0">
+            © {year} {venue.name}
+          </p>
           <OperatorInfo
             operator={operator}
             className="flex flex-col gap-1"
