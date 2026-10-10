@@ -3,12 +3,7 @@ import type { ReactNode } from 'react';
 import { formatNightSummary, weekdayName } from '@/features/venue/hours';
 import type { Venue } from '@/features/venue/types';
 import { cn } from '@/lib/cn';
-import { LoopVideo } from '@/ui/media/LoopVideo';
 import { page, Pill } from './ui';
-
-/** Phones get the loop as background (below md); desktops as a card (lg and up). */
-const PHONE = '(max-width: 767px)';
-const DESKTOP = '(min-width: 1024px)';
 
 /** One line of the headline, revealed from below its own mask. */
 function Line({
@@ -35,14 +30,9 @@ export function Hero({ venue }: { venue: Venue }) {
   return (
     <section
       id="top"
-      className="relative isolate flex aspect-[540/848] max-h-[92svh] min-h-[560px] w-full items-end overflow-hidden bg-bo-grey-800 md:aspect-video md:max-h-[900px]"
+      className="relative isolate flex aspect-[4/3] min-h-[560px] w-full items-end overflow-hidden bg-bo-grey-800 sm:aspect-video lg:max-h-[900px]"
     >
-      {/* Phones: the portrait loop is the background. */}
-      <div className="absolute inset-0 md:hidden">
-        <LoopVideo video={venue.heroVideo} media={PHONE} sizes="100vw" controlClassName="top-4 right-4" />
-      </div>
-      {/* Tablet and desktop: the interior photo, slowly zooming. */}
-      <div className="absolute inset-0 hidden animate-ken-burns md:block">
+      <div className="absolute inset-0 -z-10 animate-ken-burns">
         <Image
           src={venue.heroImage.src}
           alt={venue.heroImage.alt}
@@ -53,26 +43,9 @@ export function Hero({ venue }: { venue: Venue }) {
           style={{ objectPosition: '50% 40%' }}
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgb(17_17_17/0.88)_0%,rgb(17_17_17/0.6)_35%,rgb(17_17_17/0)_70%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(17_17_17/0.88)_0%,rgb(17_17_17/0.6)_35%,rgb(17_17_17/0)_70%)]" />
 
-      <div
-        className={cn(
-          page,
-          'relative z-10 flex flex-col gap-6 pb-8 md:pb-12 lg:pr-[280px] lg:pb-16 xl:pr-[320px]',
-        )}
-      >
-        {/* Desktop: the loop as a story card, sharp-cornered like all photography here. */}
-        <div className="absolute right-12 bottom-16 hidden aspect-[540/848] w-[220px] overflow-hidden bg-bo-grey-800 ring-1 ring-white/15 lg:block xl:w-[260px]">
-          <LoopVideo
-            video={venue.heroVideo}
-            media={DESKTOP}
-            sizes="260px"
-            controlClassName="right-2 bottom-2"
-          />
-          <span className="absolute top-3 left-3 z-10 rounded-bo-pill bg-dukla-cyan px-2.5 text-bo-small text-bo-black">
-            Z parketu
-          </span>
-        </div>
+      <div className={cn(page, 'flex flex-col gap-6 pb-8 md:pb-12 lg:pb-16')}>
         <span className="animate-fade-in self-start rounded-bo-pill border border-dukla-cyan px-3.5 py-1.5 text-bo-caption text-dukla-cyan [animation-delay:450ms]">
           {formatNightSummary(venue.hours.night)}
         </span>

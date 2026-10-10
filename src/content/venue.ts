@@ -38,12 +38,4 @@ export const venue: Venue = {
     width: 1440,
     height: 960,
   },
-  heroVideo: {
-    // H.264 MP4 only: plays everywhere (incl. iOS Safari) and the host serves it as video/mp4,
-    // while it labels .webm as audio/webm.
-    sources: [{ src: '/video/dukla-loop.mp4', type: 'video/mp4' }],
-    poster: '/video/dukla-loop-poster.webp',
-    width: 540,
-    height: 848,
-  },
 };

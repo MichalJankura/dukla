@@ -5,15 +5,10 @@ import type { EventsSnapshot } from '@/features/events/types';
 import { formatNightLong } from '@/features/venue/hours';
 import type { Venue } from '@/features/venue/types';
 import { MapPinIcon } from '@/ui/icons';
-import { LoopVideo } from '@/ui/media/LoopVideo';
 import { ParallaxImage } from '@/ui/motion/ParallaxImage';
 import { container, PillLink } from './ui';
 
 const SPOTLIGHT_LABEL = { today: 'Dnes večer', tomorrow: 'Zajtra', upcoming: 'Najbližšie' } as const;
-
-/** Must match the md: breakpoint that swaps the phone card for the desktop photo. */
-const PHONE = '(max-width: 767px)';
-const DESKTOP = '(min-width: 768px)';
 
 export function Hero({ venue, events }: { venue: Venue; events: EventsSnapshot }) {
   const next = events.tonight ?? events.upcoming[0] ?? null;
@@ -52,31 +47,13 @@ export function Hero({ venue, events }: { venue: Venue; events: EventsSnapshot }
       </div>
 
       <div className={`${container} mt-12 animate-rise [animation-delay:440ms] md:mt-20`}>
-        <div className="relative aspect-[540/848] max-h-[78svh] w-full overflow-hidden rounded-ag-xl border border-ag-graphite-d bg-ag-graphite-a md:aspect-video md:max-h-none md:rounded-ag-2xl">
-          {/* Phones: the portrait loop fills the card. */}
-          <div className="absolute inset-0 md:hidden">
-            <LoopVideo video={venue.heroVideo} media={PHONE} sizes="100vw" controlClassName="top-4 right-4" />
-          </div>
-          {/* Desktop: the interior photo, with the loop as a story card on top. */}
-          <div className="absolute inset-0 hidden md:block">
-            <ParallaxImage
-              image={venue.heroImage}
-              sizes="(min-width: 1168px) 1120px, 100vw"
-              priority
-              objectPosition="50% 45%"
-            />
-          </div>
-          <div className="absolute right-5 bottom-5 hidden aspect-[540/848] w-[190px] overflow-hidden rounded-ag-lg bg-ag-graphite-a shadow-ag-overlay ring-1 ring-white/20 md:block lg:w-[230px]">
-            <LoopVideo
-              video={venue.heroVideo}
-              media={DESKTOP}
-              sizes="230px"
-              controlClassName="right-2 bottom-2"
-            />
-            <span className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1.5 rounded-ag-pill bg-ag-black/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.12em] text-ag-pale-gray uppercase backdrop-blur-md">
-              <span className="size-1.5 animate-ping-soft rounded-full bg-dukla-cyan" />Z parketu
-            </span>
-          </div>
+        <div className="relative aspect-[4/3] overflow-hidden rounded-ag-xl border border-ag-graphite-d bg-ag-graphite-a sm:aspect-video md:rounded-ag-2xl">
+          <ParallaxImage
+            image={venue.heroImage}
+            sizes="(min-width: 1168px) 1120px, 100vw"
+            priority
+            objectPosition="50% 45%"
+          />
           <p className="absolute bottom-4 left-4 m-0 inline-flex items-center gap-2 rounded-ag-pill bg-ag-black/60 px-4 py-2.5 text-xs text-ag-pale-gray backdrop-blur-md md:bottom-5 md:left-5">
             <MapPinIcon size={14} strokeWidth={2} className="text-dukla-cyan" />
             {venue.address.street.replace('svätého', 'sv.')}, {venue.address.city}

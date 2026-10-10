@@ -1,4 +1,4 @@
-import type { ImageAsset, VideoAsset } from '@/features/events/types';
+import type { ImageAsset } from '@/features/events/types';
 
 /** 0 = Sunday … 6 = Saturday, matching Date#getDay. */
 export type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6;
@@ -40,6 +40,4 @@ export interface Venue {
     closedLabel: string;
   };
   heroImage: ImageAsset;
-  /** Portrait loop: hero background on phones, story card on desktop. */
-  heroVideo: VideoAsset;
 }
