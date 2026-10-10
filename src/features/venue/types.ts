@@ -27,6 +27,8 @@ export interface Venue {
     instagramHandle: string;
     facebook: string;
     maps: string;
+    /** Google Maps embed URL (Share → Embed a map). */
+    mapEmbed: string;
     /** Drinks menu PDF; hidden until it exists. */
     drinksMenu: string | null;
   };

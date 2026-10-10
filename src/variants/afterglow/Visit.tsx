@@ -48,10 +48,8 @@ export function Visit({ venue }: { venue: Venue }) {
 
         <Reveal delay={STAGGER_SECONDS} className="flex">
           <MapEmbed
-            tone="light"
-            query={`${address.street}, ${address.postalCode} ${address.city}`}
+            src={links.mapEmbed}
             title={`Mapa: ${venue.name}`}
-            address={`${address.street}, ${address.city}`}
             className="min-h-[440px] flex-1 rounded-ag-xl border border-ag-gray-300 bg-ag-white"
           />
         </Reveal>

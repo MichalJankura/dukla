@@ -189,10 +189,8 @@ export function Visit({ venue }: { venue: Venue }) {
       </Reveal>
       <Reveal delay={STAGGER_SECONDS} className="flex">
         <MapEmbed
-          tone="dark"
-          query={`${address.street}, ${address.postalCode} ${address.city}`}
+          src={links.mapEmbed}
           title={`Mapa: ${venue.name}`}
-          address={`${address.street}, ${address.city}`}
           className="min-h-[460px] flex-1 bg-bo-grey-800"
         />
       </Reveal>

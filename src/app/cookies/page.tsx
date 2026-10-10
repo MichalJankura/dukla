@@ -158,9 +158,9 @@ export default function CookiesPage() {
 
         <Section title="Obsah tretích strán">
           <p className="m-0">
-            Mapa Google sa načíta až po kliknutí na „Zobraziť mapu“. Vtedy môže Google uložiť vlastné cookies
-            podľa svojich zásad. Odkazy na Instagram a Facebook vedú na stránky spoločnosti Meta, ktoré majú
-            vlastné pravidlá.
+            V sekcii Kontakt je vložená mapa Google. Pri jej zobrazení Google spracúva vašu IP adresu a môže
+            ukladať vlastné cookies podľa svojich zásad. Odkazy na Instagram a Facebook vedú na stránky
+            spoločnosti Meta, ktoré majú vlastné pravidlá.
           </p>
         </Section>
 
